@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+/**
+ * @author: lencx
+ * @create_at: Dec 23, 2020
+ */
+
+// Node 10.10+
+const { resolve } = require('path');
+const { readdir, writeFile } = require('fs').promises;
+const dayjs = require('dayjs');
+
+async function getFiles(dir) {
+  const dirents = await readdir(dir, { withFileTypes: true });
+  const files = await Promise.all(dirents.map((dirent) => {
+
+    const res = resolve(dir, dirent.name);
+    const uri = resolve(__dirname, `../${dir}`);
+    return dirent.isDirectory() ? getFiles(res) : res.replace(uri, '');
+  }));
+  return Array.prototype.concat(...files);
+}
+
+getFiles('public')
+  .then(files => {
+    const json = JSON.stringify({
+      author: 'lencx',
+      modified: dayjs().format('YYYY-DD-MM hh:mm:ss'),
+      files: files,
+    }, null, 2);
+    writeFile('src/files.json', json, 'utf8');
+  })
+  .catch(e => console.error(e))

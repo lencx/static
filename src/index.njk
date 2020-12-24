@@ -1,0 +1,93 @@
+---
+author: lencx
+description: The static repository of lencx
+reopName: lencx/static
+repoLink: https://github.com/lencx/static
+---
+<!DOCTYPE html>
+<head>
+  <title>static · {{author}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta name="author" content="{{author}}">
+  <meta name="description" content="{{description}}">
+  <meta name="keywords" content="picture, static, lencx, files">
+</head>
+<body>
+<div class="info">
+  <div><b>Author:</b> {{author}}</div>
+  <div><b>Description:</b> {{description}}</div>
+  <div><b>Modified:</b> {{files.modified}}</div>
+  <div><b>GitHub:</b> <a href="{{repoLink}}">{{reopName}}</a></div>
+</div>
+<ul>
+  <li class="head"><b>Path</b><b>URL</b></li>
+  {% for item in files.files %}
+    <li>
+      <b>{{item}}</b>
+      <em>https://static.nofwl.com{{item}}</em>
+    </li>
+  {% endfor %}
+</ul>
+<footer>
+Copyright © 2020 {{author}} ❤️ Powered by <a href="https://github.com/lencx/static">static</a>
+<footer>
+</body>
+
+<style>
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+.info {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.info b {
+  margin-right: 3px;
+}
+.info a {
+  color: rgb(70, 174, 192);
+}
+ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  border: solid 2px #666;
+  border-radius: 6px;
+  overflow: hidden;
+}
+ul li {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+}
+ul li:nth-child(2n) {
+  background: #eee;
+}
+ul .head {
+  background: #444;
+  color: #fff;
+}
+ul li b {
+  display: inline-block;
+  width: 100px;
+  height: 100%;
+}
+ul li em {
+  display: inline-block;
+  word-break: break-all;
+  max-width: calc(100% - 100px);
+}
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+footer a {
+  color: rgb(70, 174, 192);
+}
+</style>
