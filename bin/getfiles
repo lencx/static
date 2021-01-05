@@ -25,7 +25,7 @@ getFiles('public')
   .then(files => {
     const json = JSON.stringify({
       author: 'lencx',
-      modified: dayjs().format('YYYY-DD-MM hh:mm:ss'),
+      modified: dayjs().format('YYYY-MM-DD hh:mm:ss'),
       files: files,
     }, null, 2);
     writeFile('src/files.json', json, 'utf8');
